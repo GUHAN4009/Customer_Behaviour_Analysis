@@ -4,5 +4,4 @@ __pycache__/
 *.pyo
 tempCodeRunnerFile.py
 
-# Large binary files
-*.pbix
+
