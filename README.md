@@ -121,3 +121,7 @@ Open `reports/Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The das
 - **Python** (pandas, matplotlib) — data cleaning and analysis
 - **Power BI** — interactive dashboard
 - **PowerPoint** — presentation slides
+---
+
+👤 About Me
+I'm Guhan, a Computer Science student specializing in Data Science. This project is part of my ongoing effort to build practical, portfolio-ready experience in data engineering and analytics.
