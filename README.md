@@ -4,17 +4,27 @@ This project digs into how customers shop — what they buy, when they buy it, a
 
 ---
 
-## What's in This Repo
+## Repository Structure
 
-| File | What it does |
-|---|---|
-| `customer_shopping_behavior.csv` | The original raw dataset |
-| `customer_shopping_behavior_cleaned.csv` | Cleaned version, ready for analysis |
-| `dtmanpl.py` | Cleans the data and adds derived columns |
-| `Analysis.py` | Runs the actual analysis and generates charts |
-| `customer_behavior_analysis.pptx` | 9-slide presentation of findings |
-| `Customer_Behavior_dashboard.pbix` | Interactive Power BI dashboard |
-| `tempCodeRunnerFile.py` | IDE leftover — safe to delete |
+```
+Customer_Behaviour_Analysis/
+│
+├── data/
+│   ├── customer_shopping_behavior.csv           # Original raw dataset
+│   └── customer_shopping_behavior_cleaned.csv   # Cleaned version, ready for analysis
+│
+├── src/
+│   ├── clean_data.py     # Cleans the raw data and adds derived columns
+│   └── analysis.py       # Runs the analysis and generates charts
+│
+├── reports/
+│   ├── CB_Report.docx                       # Written project report
+│   ├── customer_behavior_analysis.pptx      # 9-slide presentation of findings
+│   └── Customer_Behavior_dashboard.pbix     # Interactive Power BI dashboard
+│
+├── .gitignore
+└── README.md
+```
 
 ---
 
@@ -35,24 +45,25 @@ pip install pandas matplotlib
 **Step 1 — Clean the data:**
 
 ```bash
-python dtmanpl.py
+cd src
+python clean_data.py
 ```
 
-This reads the raw CSV, fills in missing ratings, renames columns consistently, adds a few useful new columns, and saves the cleaned file.
+This reads the raw CSV from `data/`, fills in missing ratings, renames columns consistently, adds a few useful new columns, and saves the cleaned file back to `data/`.
 
 **Step 2 — Run the analysis:**
 
 ```bash
-python Analysis.py
+python analysis.py
 ```
 
-The script has several analysis blocks. Most are commented out by default — just uncomment the ones you want to run.
+The script is organized into functions — one per analysis. Uncomment the function calls at the bottom of the file for the analyses you want to run.
 
 ---
 
 ## What the Cleaning Script Does
 
-`dtmanpl.py` takes the raw data and makes it analysis-ready:
+`src/clean_data.py` takes the raw data and makes it analysis-ready:
 
 - **Fills missing ratings** with the average rating for that product category
 - **Standardizes column names** to `snake_case` (e.g. `purchase_amount_(usd)` becomes `purchase_amount`)
@@ -64,14 +75,14 @@ The script has several analysis blocks. Most are commented out by default — ju
 
 ## What the Analysis Covers
 
-Each section in `Analysis.py` can be turned on or off independently:
+Each function in `src/analysis.py` can be run independently:
 
-- **Revenue by Gender** — pie chart showing how spending breaks down between male and female customers
-- **Top 5 Products by Rating** — printed list of the highest-rated items
-- **Shipping Type Comparison** — bar chart showing that Express shipping customers tend to spend more per transaction than Standard
-- **Discount-Dependent Products** — which items rely most heavily on discounts to drive purchases
-- **Revenue by Age Group** — pie chart of spending by age bracket
-- **Customer Segmentation** — classifies customers as New, Returning, or Loyal based on purchase history
+- **`revenue_by_gender()`** — pie chart showing how spending breaks down between male and female customers
+- **`top_rated_products()`** — prints the highest-rated items
+- **`shipping_type_comparison()`** — bar chart showing that Express shipping customers tend to spend more per transaction than Standard
+- **`discount_dependent_products()`** — which items rely most heavily on discounts to drive purchases
+- **`revenue_by_age_group()`** — pie chart of spending by age bracket
+- **`customer_segmentation()`** — classifies customers as New, Returning, or Loyal based on purchase history
 
 ### Key Findings
 
@@ -85,13 +96,13 @@ Each section in `Analysis.py` can be turned on or off independently:
 
 ## Power BI Dashboard
 
-Open `Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The dashboard lets you explore revenue by category and age group, see subscription status breakdowns, and filter by gender, category, shipping type, and subscription status interactively.
+Open `reports/Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The dashboard lets you explore revenue by category and age group, see subscription status breakdowns, and filter by gender, category, shipping type, and subscription status interactively.
 
 ---
 
 ## Presentation Slides
 
-`customer_behavior_analysis.pptx` is a 9-slide deck that walks through the entire project:
+`reports/customer_behavior_analysis.pptx` is a 9-slide deck that walks through the entire project:
 
 1. Title
 2. Dataset overview
@@ -102,12 +113,6 @@ Open `Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The dashboard l
 7. Discount analysis
 8. Customer segmentation
 9. Revenue by age group
-
----
-
-## Known Issue
-
-There's a small bug in the `segment_customer()` function: customers with exactly 2 previous purchases don't get assigned a segment. Fix it by changing `x > 2` to `x >= 2` in the Returning segment condition.
 
 ---
 
