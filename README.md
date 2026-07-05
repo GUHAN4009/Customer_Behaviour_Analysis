@@ -125,4 +125,4 @@ Open `reports/Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The das
 
 👤 About Me  
 ---
-I'm Guhan, a Computer Science student specializing in Data Science. This project is part of my ongoing effort to build practical, portfolio-ready experience in data analytics and visualization.
+Hi I'm Guhan, a Data Science student. This project is part of my ongoing effort to build practical, portfolio-ready experience in data analytics and visualization.
