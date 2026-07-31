@@ -99,7 +99,7 @@ Each function in `src/analysis.py` can be run independently:
 Open `reports/Customer_Behavior_dashboard.pbix` in **Power BI Desktop**. The dashboard lets you explore revenue by category and age group, see subscription status breakdowns, and filter by gender, category, shipping type, and subscription status interactively.
 
 ---
-![Dasboard](repots/dashboard.png)
+![Dasboard](reports/dashboard.png)
 ## Presentation Slides
 
 `reports/customer_behavior_analysis.pptx` is a 9-slide deck that walks through the entire project:
